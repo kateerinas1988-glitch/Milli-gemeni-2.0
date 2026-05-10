@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студия красоты Milli | Премиум услуги</title>
+    
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Подключение иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Цветовая палитра и переменные (Роскошный темный стиль) */
+        :root {
+            --bg-main: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1c1c1c;
+            --gold: #d4af37;
+            --gold-hover: #f3ce5e;
+            --gold-dark: #aa8c2c;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Навигация (Шапка) */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Кнопка */
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 15px 40px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--gold);
+            color: var(--bg-main);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-solid {
+            background-color: var(--gold);
+            color: var(--bg-main);
+            font-weight: 500;
+        }
+
+        .btn-solid:hover {
+            background-color: var(--gold-hover);
+            border-color: var(--gold-hover);
+        }
+
+        /* Секция приветствия (Hero) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Используем темное фото с градиентом для читаемости текста */
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), 
+                        url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* Общие стили секций */
+        section {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Услуги */
+        .services-bg {
+            background-color: var(--bg-secondary);
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: 120px 0;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            padding: 50px 30px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Обо мне */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--gold);
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%) contrast(120%);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        /* Форма контактов */
+        .contact-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            padding: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group select option {
+            background-color: var(--bg-card);
+            color: var(--text-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+            margin-top: 10px;
+        }
+
+        .submit-btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .submit-btn-container .btn {
+            width: 100%;
+        }
+
+        /* Футер */
+        footer {
+            background-color: #050505;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .about-content { flex-direction: column; }
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; /* Для упрощения скрываем на мобильных, оставляя логотип */ }
+            .about-image::after { display: none; }
+            .contact-wrapper { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="header-container">
+            <div class="logo-text">Milli</div>
+            <nav class="nav-links">
+                <a href="#hero">Главная</a>
+                <a href="#services">Услуги</a>
+                <a href="#about">Обо мне</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Искусство вашей красоты</h1>
+            <p>Эксклюзивный сервис, премиальные материалы и индивидуальный подход в студии красоты Milli.</p>
+            <a href="#contact" class="btn btn-solid">Записаться на визит</a>
+        </div>
+    </section>
+
+    <!-- Секция Услуг -->
+    <div class="services-bg" id="services">
+        <div class="services-container">
+            <h2 class="section-title">Наши услуги</h2>
+            <p class="section-subtitle">Безупречность в каждой детали</p>
+            
+            <div class="services-grid">
+                <!-- Услуга 1: Стрижки -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-scissors"></i>
+                    </div>
+                    <h3>Стрижки</h3>
+                    <p>Профессиональные женские и мужские стрижки. От строгой классики до смелых трендов. Мы подберем идеальную форму, которая подчеркнет черты вашего лица.</p>
+                </div>
+
+                <!-- Услуга 2: Окрашивание -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-paintbrush"></i>
+                    </div>
+                    <h3>Окрашивание</h3>
+                    <p>Сложные техники окрашивания (Airtouch, Shatush, Balayage), тотальный блонд и выход из черного. Работаем на премиальных красителях с защитой структуры волоса.</p>
+                </div>
+
+                <!-- Услуга 3: Маникюр -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
+                    <h3>Маникюр</h3>
+                    <p>Аппаратный и комбинированный маникюр, наращивание, архитектура ногтевой пластины и эстетичный дизайн. Абсолютная стерильность и качество.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция Обо мне -->
+    <section id="about">
+        <h2 class="section-title">Обо мне</h2>
+        <p class="section-subtitle">Философия моего дела</p>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <!-- Вставлено тематическое фото из Unsplash -->
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Мастер Милли">
+            </div>
+            <div class="about-text">
+                <h3>Добро пожаловать. Я — Милли.</h3>
+                <p>Моя цель — не просто оказать услугу, а создать образ, в котором вы будете чувствовать себя уверенно и роскошно. Я искренне верю, что каждая деталь имеет значение.</p>
+                <p>В бьюти-индустрии я работаю уже несколько лет, регулярно повышая квалификацию у лучших мастеров. В моей студии мы не экономим на материалах: здесь представлены только премиальные бренды косметики и строжайшие протоколы дезинфекции.</p>
+                <p>Для меня важна эстетика во всем — от результата работы до чашки кофе, которую вам предложат во время процедуры.</p>
+                <div class="signature">Milli</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Контакты -->
+    <section id="contact">
+        <h2 class="section-title">Запись на визит</h2>
+        <p class="section-subtitle">Оставьте заявку, и мы подберем удобное время</p>
+        
+        <div class="contact-wrapper">
+            <!-- Обработчик формы просто показывает уведомление без перезагрузки страницы -->
+            <form onsubmit="event.preventDefault(); alert('Благодарим за обращение! Ваша заявка принята, мы свяжемся с вами в ближайшее время.'); this.reset();">
+                <div class="form-group">
+                    <input type="text" placeholder="Ваше имя" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" placeholder="Номер телефона" required>
+                </div>
+
+                <div class="form-group">
+                    <select required>
+                        <option value="" disabled selected>Выберите услугу</option>
+                        <option value="haircut">Стрижка (Мужская/Женская)</option>
+                        <option value="coloring">Окрашивание волос</option>
+                        <option value="manicure">Маникюр / Ногтевой сервис</option>
+                        <option value="consultation">Консультация</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <textarea placeholder="Ваши пожелания (удобная дата, время или вопросы)"></textarea>
+                </div>
+                
+                <div class="submit-btn-container">
+                    <button type="submit" class="btn btn-solid">Отправить заявку</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="social-links">
+            <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+        <p class="footer-text">&copy; 2023 Студия красоты Milli. Все права защищены. Эстетика и премиальный сервис.</p>
+    </footer>
+
+</body>
+</html>
